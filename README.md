@@ -58,7 +58,7 @@ String result = cqlbr
     .asString();
 ```
 
-## UPDATE
+## DELETE
 
 ```dart
 Expect : "DELETE FROM CLIENTES WHERE ID_CLIENTE = 1";
