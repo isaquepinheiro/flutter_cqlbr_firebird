@@ -26,7 +26,7 @@ Durante o desenvolvimento de software, é evidente a preocupação em que se tem
     .asString();
 ```
 
-## INSET
+## INSERT
 
 ```dart
 Expect : 'INSERT INTO CLIENTES (ID_CLIENTE, NOME_CLIENTE) VALUES (''1'', ''MyName'')';
