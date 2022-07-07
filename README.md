@@ -29,7 +29,7 @@ Durante o desenvolvimento de software, é evidente a preocupação em que se tem
 ## INSERT
 
 ```dart
-Expect : "INSERT INTO CLIENTES (ID_CLIENTE, NOME_CLIENTE) VALUES ('1', 'MyName')";
+Expect : "INSERT INTO CLIENTES (ID_CLIENTE, NOME_CLIENTE) VALUES (1, 'MyName')";
 
 String result = cqlbr
        .insert$()
