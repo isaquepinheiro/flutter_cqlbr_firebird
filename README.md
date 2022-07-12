@@ -18,7 +18,7 @@ Durante o desenvolvimento de software, é evidente a preocupação em que se tem
 
 - [CQLBr Framework for Dart/Flutter (Core)](https://github.com/isaquepinheiro/flutter_cqlbr_core)
 
-TODO: Ao instâncias o CQL, deve-se injetar a ele o nodelo do banco que se vai usar, isso poderá ser feito pode parâmetro em seu sistema, configurando qual modelo será injetado.
+TODO: Ao instâncias o CQL, deve-se injetar a ele o modelo do banco que se vai usar, isso poderá ser feito pode parâmetro em seu sistema, configurando qual modelo será injetado.
 
 ## SELECT
 
