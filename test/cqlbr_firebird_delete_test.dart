@@ -6,13 +6,15 @@ void main() {
   CQLBr cqlbr = CQLBr(select: CQLSelectFirebird());
 
   test('TestDeleteFirebird', () {
-    String result = cqlbr.delete$().from$('CLIENTES').asString();
+    String result = cqlbr.delete$().from$('CLIENTES').asResult();
+
     expect(result, 'DELETE FROM CLIENTES');
   });
 
   test('TestDeleteWhereFirebird', () {
     String result =
-        cqlbr.delete$().from$('CLIENTES').where$('ID_CLIENTE = 1').asString();
+        cqlbr.delete$().from$('CLIENTES').where$('ID_CLIENTE = 1').asResult();
+
     expect(result, 'DELETE FROM CLIENTES WHERE ID_CLIENTE = 1');
   });
 }

@@ -12,7 +12,8 @@ void main() {
         .count$()
         .as$('IDCOUNT')
         .from$('CLIENTES')
-        .asString();
+        .asResult();
+
     expect(result, 'SELECT COUNT(ID_CLIENTE) AS IDCOUNT FROM CLIENTES');
   });
 
@@ -23,7 +24,8 @@ void main() {
         .lower$()
         .as$('NOME')
         .from$('CLIENTES')
-        .asString();
+        .asResult();
+
     expect(result, 'SELECT LOWER(NOME_CLIENTE) AS NOME FROM CLIENTES');
   });
 
@@ -34,7 +36,8 @@ void main() {
         .upper$()
         .as$('NOME')
         .from$('CLIENTES')
-        .asString();
+        .asResult();
+
     expect(result, 'SELECT UPPER(NOME_CLIENTE) AS NOME FROM CLIENTES');
   });
 
@@ -45,7 +48,8 @@ void main() {
         .max$()
         .as$('IDCOUNT')
         .from$('CLIENTES')
-        .asString();
+        .asResult();
+
     expect(result, 'SELECT MAX(ID_CLIENTE) AS IDCOUNT FROM CLIENTES');
   });
 
@@ -56,7 +60,8 @@ void main() {
         .min$()
         .as$('IDCOUNT')
         .from$('CLIENTES')
-        .asString();
+        .asResult();
+
     expect(result, 'SELECT MIN(ID_CLIENTE) AS IDCOUNT FROM CLIENTES');
   });
 
@@ -67,7 +72,8 @@ void main() {
         .substring$(1, 2)
         .as$('NOME')
         .from$('CLIENTES')
-        .asString();
+        .asResult();
+
     expect(result,
         'SELECT SUBSTRING(NOME_CLIENTE FROM 1 FOR 2) AS NOME FROM CLIENTES');
   });
@@ -80,14 +86,16 @@ void main() {
         .where$()
         .month$('NASCTO')
         .equal$('9')
-        .asString();
+        .asResult();
+
     expect(result,
         'SELECT * FROM CLIENTES WHERE (EXTRACT(MONTH FROM NASCTO) = 9)');
   });
 
   test('TestMonthSelectFirebird', () {
     String result =
-        cqlbr.select$().column$().month$('NASCTO').from$('CLIENTES').asString();
+        cqlbr.select$().column$().month$('NASCTO').from$('CLIENTES').asResult();
+
     expect(result, 'SELECT EXTRACT(MONTH FROM NASCTO) FROM CLIENTES');
   });
 
@@ -99,14 +107,16 @@ void main() {
         .where$()
         .day$('NASCTO')
         .equal$('9')
-        .asString();
+        .asResult();
+
     expect(
         result, 'SELECT * FROM CLIENTES WHERE (EXTRACT(DAY FROM NASCTO) = 9)');
   });
 
   test('TestDaySelectFirebird', () {
     String result =
-        cqlbr.select$().column$().day$('NASCTO').from$('CLIENTES').asString();
+        cqlbr.select$().column$().day$('NASCTO').from$('CLIENTES').asResult();
+
     expect(result, 'SELECT EXTRACT(DAY FROM NASCTO) FROM CLIENTES');
   });
 
@@ -118,14 +128,16 @@ void main() {
         .where$()
         .year$('NASCTO')
         .equal$('9')
-        .asString();
+        .asResult();
+
     expect(
         result, 'SELECT * FROM CLIENTES WHERE (EXTRACT(YEAR FROM NASCTO) = 9)');
   });
 
   test('TestYearSelectFirebird', () {
     String result =
-        cqlbr.select$().column$().year$('NASCTO').from$('CLIENTES').asString();
+        cqlbr.select$().column$().year$('NASCTO').from$('CLIENTES').asResult();
+
     expect(result, 'SELECT EXTRACT(YEAR FROM NASCTO) FROM CLIENTES');
   });
 
@@ -138,7 +150,8 @@ void main() {
         .date$('NASCTO')
         .equal$()
         .date$(Fun.q('02/11/2020'))
-        .asString();
+        .asResult();
+
     expect(
         result, 'SELECT * FROM CLIENTES WHERE NASCTO = ${Fun.q('02/11/2020')}');
   });
@@ -149,7 +162,8 @@ void main() {
         .column$()
         .concat$([Fun.q('-'), 'NOME'])
         .from$('CLIENTES')
-        .asString();
+        .asResult();
+
     expect(result, 'SELECT ${Fun.q('-')} || NOME FROM CLIENTES');
   });
 
@@ -162,7 +176,8 @@ void main() {
         .where$()
         .concat$([Fun.q('-'), 'NOME'])
         .equal$(Fun.q('-NOME'))
-        .asString();
+        .asResult();
+
     expect(result,
         'SELECT ${Fun.q('-')} || NOME FROM CLIENTES WHERE (${Fun.q('-')} || NOME = ${Fun.q('-NOME')})');
   });

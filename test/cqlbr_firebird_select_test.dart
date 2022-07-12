@@ -7,7 +7,8 @@ void main() {
 
   test('TestSelectAll', () {
     String result =
-        cqlbr.select$().all$().from$('CLIENTES').as$('CLI').asString();
+        cqlbr.select$().all$().from$('CLIENTES').as$('CLI').asResult();
+
     expect(result, 'SELECT * FROM CLIENTES AS CLI');
   });
 
@@ -17,7 +18,8 @@ void main() {
         .all$()
         .from$('CLIENTES')
         .where$('ID_CLIENTE = 1')
-        .asString();
+        .asResult();
+
     expect(result, 'SELECT * FROM CLIENTES WHERE ID_CLIENTE = 1');
   });
 
@@ -31,7 +33,8 @@ void main() {
         .greaterEqThan$(10)
         .or$('ID')
         .lessEqThan$(20)
-        .asString();
+        .asResult();
+
     expect(result,
         'SELECT * FROM CLIENTES WHERE (ID_CLIENTE = 1) AND ((ID >= 10) OR (ID <= 20))');
   });
@@ -46,7 +49,8 @@ void main() {
         .greaterEqThan$(10)
         .and$('ID')
         .lessEqThan$(20)
-        .asString();
+        .asResult();
+
     expect(result,
         'SELECT * FROM CLIENTES WHERE (ID_CLIENTE = 1) AND (ID >= 10) AND (ID <= 20)');
   });
@@ -57,7 +61,8 @@ void main() {
         .all$()
         .from$('CLIENTES')
         .orderBy$('ID_CLIENTE')
-        .asString();
+        .asResult();
+
     expect(result, 'SELECT * FROM CLIENTES ORDER BY ID_CLIENTE');
   });
 
@@ -68,7 +73,8 @@ void main() {
         .column$('NOME_CLIENTE')
         .from$('CLIENTES')
         .orderBy$('NOME_CLIENTE')
-        .asString();
+        .asResult();
+
     expect(result,
         'SELECT ID_CLIENTE, NOME_CLIENTE FROM CLIENTES ORDER BY NOME_CLIENTE');
   });
@@ -88,7 +94,8 @@ void main() {
         .end$()
         .as$('TIPO_PESSOA')
         .from$('CLIENTES')
-        .asString();
+        .asResult();
+
     expect(result,
         "SELECT ID_CLIENTE, NOME_CLIENTE, (CASE TIPO_CLIENTE WHEN 0 THEN 'FISICA' WHEN 1 THEN 'JURIDICA' ELSE 'PRODUTOR' END) AS TIPO_PESSOA FROM CLIENTES");
   });
@@ -101,7 +108,8 @@ void main() {
         .skip$(0)
         .from$('CLIENTES', 'CLI')
         .orderBy$('CLI.ID_CLIENTE')
-        .asString();
+        .asResult();
+
     expect(result,
         'SELECT FIRST 3 SKIP 0 * FROM CLIENTES AS CLI ORDER BY CLI.ID_CLIENTE');
   });

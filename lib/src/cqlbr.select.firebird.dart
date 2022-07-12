@@ -7,7 +7,7 @@ import 'cqlbr.serialize.firebird.dart';
 class CQLSelectFirebird extends CQLSelect {
   CQLSelectFirebird() {
     driver = Database.dbnFirebird;
-    qualifiers$ = CQLSelectQualifiersFirebird();
+    qualifiers = CQLSelectQualifiersFirebird();
     CQLBrRegister.instance.registerSelect(driver, this);
     CQLBrRegister.instance.registerSerialize(driver, CQLSerializerFirebird());
     CQLBrRegister.instance.registerFunctions(driver, CQLFunctionsFirebird());
